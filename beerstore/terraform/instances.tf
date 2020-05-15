@@ -12,7 +12,13 @@ resource "aws_instance" "instances" {
 
   key_name = "${aws_key_pair.keypair.key_name}"
 
+  vpc_security_group_ids = ["${aws_security_group.allow_ssh.id}"]
+
   tags = {
     Name = "hibicode_instances"
   }
+}
+
+output "public_ips" {
+  value = "${join(", ", aws_instance.instances.*.public_ip)}"
 }
