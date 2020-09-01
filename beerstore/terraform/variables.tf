@@ -5,3 +5,5 @@ variable "avaliability_zones" {
     "us-east-1c"
   ]
 }
+
+variable "my_public_ip" {}
